@@ -1,6 +1,6 @@
 ﻿using CSharpFunctionalExtensions;
 
-namespace Shop.Domain.AggregateModel.CategoryAggregate
+namespace Shopping.Domain.AggregateModel.CategoryAggregate
 {
     public class Category : EntityBase
     {

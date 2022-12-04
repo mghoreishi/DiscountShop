@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 
 
-namespace Shop.Domain
+namespace Shopping.Domain
 {
     public sealed class Error : ValueObject
     {

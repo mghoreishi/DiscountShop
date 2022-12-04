@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 using System.Text.RegularExpressions;
 
-namespace Shop.Domain.AggregateModel.CategoryAggregate
+namespace Shopping.Domain.AggregateModel.CategoryAggregate
 {
     public class CategoryName : ValueObject
     {

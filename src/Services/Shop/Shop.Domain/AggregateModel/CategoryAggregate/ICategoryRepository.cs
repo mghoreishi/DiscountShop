@@ -1,7 +1,7 @@
-﻿using Shop.Domain.Common;
+﻿using Shopping.Domain.Common;
 
 
-namespace Shop.Domain.AggregateModel.CategoryAggregate
+namespace Shopping.Domain.AggregateModel.CategoryAggregate
 {
     public interface ICategoryRepository : IRepository<Category>
     {

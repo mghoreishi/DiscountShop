@@ -1,8 +1,8 @@
-﻿using Shop.Domain.Common;
+﻿using Shopping.Domain.Common;
 using System;
 
 
-namespace Shop.Domain.AggregateModel.ShopAggregate
+namespace Shopping.Domain.AggregateModel.ShopAggregate
 {
     public interface IShopRepository : IRepository<Shop>
     {

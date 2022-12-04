@@ -11,13 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BB
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways", "{97F9828A-66CA-475D-82C8-7FA91957DEDD}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shop", "Shop", "{AC406EDA-44E4-4635-A1CC-A367A56C7209}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shopping", "Shopping", "{AC406EDA-44E4-4635-A1CC-A367A56C7209}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.API", "src\Services\Shop\Shop.API\Shop.API.csproj", "{FA364A09-2A17-49F0-A074-5B722037D28C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.API", "src\Services\Shop\Shop.API\Shopping.API.csproj", "{FA364A09-2A17-49F0-A074-5B722037D28C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Domain", "src\Services\Shop\Shop.Domain\Shop.Domain.csproj", "{91F5BC80-620B-49E1-AA90-50234389AAD9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Domain", "src\Services\Shop\Shop.Domain\Shopping.Domain.csproj", "{91F5BC80-620B-49E1-AA90-50234389AAD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shop.Infrastructure", "src\Services\Shop\Shop.Infrastructure\Shop.Infrastructure.csproj", "{05FF0FC7-7752-480C-8279-7A25F35F73D0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shopping.Infrastructure", "src\Services\Shop\Shop.Infrastructure\Shopping.Infrastructure.csproj", "{05FF0FC7-7752-480C-8279-7A25F35F73D0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSharpFunctionalExtensions", "src\Common\CSharpFunctionalExtensions\CSharpFunctionalExtensions.csproj", "{8CC24E02-3732-4A4D-8709-5186D601F7C3}"
 EndProject

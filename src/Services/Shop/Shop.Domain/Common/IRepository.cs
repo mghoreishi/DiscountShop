@@ -1,7 +1,7 @@
 ﻿using CSharpFunctionalExtensions;
 
 
-namespace Shop.Domain.Common
+namespace Shopping.Domain.Common
 {
     public interface IRepository<T> where T : Entity
     {
