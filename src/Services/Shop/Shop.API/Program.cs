@@ -1,21 +1,39 @@
-var builder = WebApplication.CreateBuilder(args);
+using Microsoft.AspNetCore;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Shopping.Infrastructure.Data;
 
-// Add services to the container.
-builder.Services.AddRazorPages();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
+namespace Shop.API
 {
-    app.UseExceptionHandler("/Error");
+    public class Program
+    {
+        public static string AppName = "Shop";
+        public static void Main(string[] args)
+        {
+            CreateHostBuilder(args)
+                .Build()
+                //.MigrateDbContext<ShopContext>((context, services) =>
+                //{
+                //    //ILogger<ShopContextSeed> logger = services.GetService<ILogger<ShopContextSeed>>();
+
+                //    //ShopContextSeed
+                //    //    .SeedAsync(context, logger)
+                //    //    .Wait();
+                //})
+                .Run();
+        }
+
+        public static IWebHostBuilder CreateHostBuilder(string[] args)
+        {
+            return WebHost.CreateDefaultBuilder(args)
+                 .ConfigureAppConfiguration((host, config) =>
+                 {
+                     config.AddEnvironmentVariables();
+                 })
+                 .UseStartup<Startup>();
+
+        }
+    }
 }
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
-
-app.MapRazorPages();
-
-app.Run();
