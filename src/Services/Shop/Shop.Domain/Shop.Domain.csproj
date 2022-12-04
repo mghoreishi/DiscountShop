@@ -6,4 +6,12 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\CSharpFunctionalExtensions\CSharpFunctionalExtensions.csproj" />
+  </ItemGroup>
+
 </Project>
