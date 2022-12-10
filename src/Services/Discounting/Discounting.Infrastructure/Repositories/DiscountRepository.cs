@@ -1,5 +1,6 @@
 ﻿using Discounting.Domain.AggregateModel.DiscountAggregate;
 using Discounting.Domain.Common;
+using Discounting.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 

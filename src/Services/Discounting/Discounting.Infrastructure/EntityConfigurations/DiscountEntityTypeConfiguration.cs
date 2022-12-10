@@ -12,6 +12,7 @@ namespace Discounting.Infrastructure.EntityConfigurations
             builder.ToTable("discount").HasKey(k => k.Id);
 
             builder.Property(p => p.Id).HasColumnName("id");
+            builder.Property(p => p.ShopId).HasColumnName("shop_id");
 
             builder.Property(p => p.DiscountName).HasColumnName("name").IsRequired().HasMaxLength(50)
                 .HasConversion(p => p.Value, p => DiscountName.Create(p).Value);
