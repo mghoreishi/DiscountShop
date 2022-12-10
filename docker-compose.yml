@@ -1,8 +1,21 @@
 version: '3.4'
 
 services:
+
+  discountshopdb:
+    image: postgres
+
+  pgadmin:
+    image: dpage/pgadmin  
+
   shopping.api:
     image: ${DOCKER_REGISTRY-}shoppingapi
     build:
       context: .
       dockerfile: src/Services/Shop/Shop.API/Dockerfile
+    depends_on:
+      - discountshopdb
+
+volumes:
+  pgadmin-data:
+  discountshop-database:
