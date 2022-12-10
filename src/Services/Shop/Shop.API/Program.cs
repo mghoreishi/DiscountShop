@@ -5,11 +5,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Shopping.Infrastructure.Data;
 
-namespace Shop.API
+namespace Shopping.API
 {
     public class Program
     {
-        public static string AppName = "Shop";
+        public static string AppName = "Shopping";
         public static void Main(string[] args)
         {
             CreateHostBuilder(args)

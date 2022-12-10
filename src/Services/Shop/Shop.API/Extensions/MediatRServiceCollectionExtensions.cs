@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Shop.API.Application.Behaviors;
+using Shopping.API.Application.Behaviors;
 using System.Reflection;
 
 namespace Shopping.API.Extensions

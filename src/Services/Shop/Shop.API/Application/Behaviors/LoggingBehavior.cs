@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Shopping.API.Extensions;
 
-namespace Shop.API.Application.Behaviors
+namespace Shopping.API.Application.Behaviors
 {
     /// <summary>
     ///  Log all the incoming request and outgoing responses in the pipeline

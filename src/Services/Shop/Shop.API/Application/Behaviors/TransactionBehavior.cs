@@ -4,7 +4,7 @@ using Serilog.Context;
 using Shopping.API.Extensions;
 using Shopping.Infrastructure.Data;
 
-namespace Shop.API.Application.Behaviors
+namespace Shopping.API.Application.Behaviors
 {
     /// <summary>
     /// Begin a transaction and if the transaction is successfull it will be commited else it would be rolled back

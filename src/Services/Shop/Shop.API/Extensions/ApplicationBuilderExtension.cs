@@ -9,7 +9,7 @@
         public static void UseCustomSwagger(this IApplicationBuilder app, string pathBase)
         {
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint($"{ (!string.IsNullOrEmpty(pathBase) ? pathBase : string.Empty) }/swagger/v1/swagger.json", "Inventory API V1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint($"{ (!string.IsNullOrEmpty(pathBase) ? pathBase : string.Empty) }/swagger/v1/swagger.json", "Shop API V1"));
         }
 
 

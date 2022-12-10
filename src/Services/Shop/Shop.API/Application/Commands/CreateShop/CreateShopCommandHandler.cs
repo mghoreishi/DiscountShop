@@ -19,12 +19,12 @@ namespace Shopping.API.Application.Commands.CreateShop
 
         public async Task<Result> Handle(CreateShopCommand request, CancellationToken cancellationToken)
         {
-            Shopping.Domain.AggregateModel.ShopAggregate.Shop model = new(
+            Shop model = new(
              shopName: ShopName.Create(request.Name).Value,
              shopDescription: ShopDescription.Create(request.Name).Value,
              address: Address.Create(request.Name).Value,
              phone: Phone.Create(request.Name).Value,
-             categoryId:request.CategoryId
+             categoryId: request.CategoryId
              );
 
             await _shopRepository.AddAsync(model);

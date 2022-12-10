@@ -2,7 +2,7 @@
 using MediatR;
 using Shopping.API.Extensions;
 
-namespace Shop.API.Application.Behaviors
+namespace Shopping.API.Application.Behaviors
 {
     /// <summary>
     ///  Validate all the requests in the pipeline

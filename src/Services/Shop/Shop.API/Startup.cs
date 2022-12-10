@@ -7,7 +7,7 @@ using Shopping.Domain.AggregateModel.CategoryAggregate;
 using Shopping.Domain.AggregateModel.ShopAggregate;
 using Shopping.Infrastructure.Repositories;
 
-namespace Shop.API
+namespace Shopping.API
 {
     public class Startup
     {
