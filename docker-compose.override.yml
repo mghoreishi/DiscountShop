@@ -22,12 +22,22 @@ services:
       - PGADMIN_DEFAULT_PASSWORD=admin1234
     restart: always
     ports:
-        - "5050:80"
+        - "6050:80"
     volumes:
       - pgadmin-data:/root/.pgadmin
 
   shopping.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__ShopConnectionString=Server=discountshopdb;Port=5432;Database=shopDb;UId=admin;Password=admin1234;
     ports:
-      - "80"
+      - "6010:80"
+
+  discounting.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DiscountConnectionString=Server=discountshopdb;Port=5432;Database=discountDb;UId=admin;Password=admin1234;
+    ports:
+      - "6012:80"
+
+

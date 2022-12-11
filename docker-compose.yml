@@ -6,13 +6,21 @@ services:
     image: postgres
 
   pgadmin:
-    image: dpage/pgadmin  
+    image: dpage/pgadmin4  
 
   shopping.api:
     image: ${DOCKER_REGISTRY-}shoppingapi
     build:
       context: .
       dockerfile: src/Services/Shop/Shop.API/Dockerfile
+    depends_on:
+      - discountshopdb
+
+  discounting.api:
+    image: ${DOCKER_REGISTRY-}discountingapi
+    build:
+      context: .
+      dockerfile: src/Services/Discounting/Discounting.API/Dockerfile
     depends_on:
       - discountshopdb
 
