@@ -21,9 +21,9 @@ namespace Shopping.API.Application.Commands.CreateShop
         {
             Shop model = new(
              shopName: ShopName.Create(request.Name).Value,
-             shopDescription: ShopDescription.Create(request.Name).Value,
-             address: Address.Create(request.Name).Value,
-             phone: Phone.Create(request.Name).Value,
+             shopDescription: ShopDescription.Create(request.Description).Value,
+             address: Address.Create(request.Address).Value,
+             phone: Phone.Create(request.Phone).Value,
              categoryId: request.CategoryId
              );
 
