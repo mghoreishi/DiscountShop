@@ -21,7 +21,7 @@ namespace Discounting.API.Application.Commands.CreateDiscount
         {
             Discount model = new(
              discountName: DiscountName.Create(request.Name).Value,
-             discountDescription: DiscountDescription.Create(request.Name).Value,
+             discountDescription: DiscountDescription.Create(request.Description).Value,
              shopId:request.ShopId
              );
 
