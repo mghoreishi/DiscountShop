@@ -36,7 +36,7 @@ namespace Shopping.API.Controllers
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<IActionResult> CreateGShop([FromBody] CreateShopCommand model)
+        public async Task<IActionResult> CreateShop([FromBody] CreateShopCommand model)
         {
             Result result = await _mediator.Send(model);
 
