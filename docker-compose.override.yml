@@ -26,6 +26,12 @@ services:
     volumes:
       - pgadmin-data:/root/.pgadmin
 
+  rabbitmq:
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "5673:5673"
+      - "15673:15673"
   shopping.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

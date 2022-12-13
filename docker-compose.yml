@@ -8,6 +8,9 @@ services:
   pgadmin:
     image: dpage/pgadmin4  
 
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+
   shopping.api:
     image: ${DOCKER_REGISTRY-}shoppingapi
     build:
