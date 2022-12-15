@@ -23,7 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\Common\OrgNet.IntSoft.WebHost.Customization\OrgNet.IntSoft.WebHost.Customization.csproj" />
     <ProjectReference Include="..\..\..\Shop.API\Shopping.API.csproj" />
   </ItemGroup>
 

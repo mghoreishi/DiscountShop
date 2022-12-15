@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -32,19 +33,7 @@ namespace Shopping.IntegrationTests
             ShopContext context = testServer.Host.Services.GetService<ShopContext>();
             context.Database.EnsureDeleted();
 
-
-            testServer.Host
-                 .MigrateDbContext<ShopContext>((context, services) =>
-                 {
-                     IWebHostEnvironment env = services.GetService<IWebHostEnvironment>();
-                     IOptions<ConnectionStringsOptions> settings = services.GetService<IOptions<ConnectionStringsOptions>>();
-                     //ILogger<ShopContextSeed> logger = services.GetService<ILogger<ShopContextSeed>>();
-
-                     //ShopContextSeed
-                     //   .SeedAsync(context, logger)
-                     //   .Wait();
-                 })
-                 ;
+            context.Database.Migrate();
 
             return testServer;
         }
