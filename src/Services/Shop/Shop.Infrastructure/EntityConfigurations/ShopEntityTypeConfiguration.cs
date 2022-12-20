@@ -15,6 +15,8 @@ namespace Shopping.Infrastructure.EntityConfigurations
 
             builder.Property(p => p.CategoryId).HasColumnName("category_id");
 
+            builder.Property(p => p.DiscountCount).HasColumnName("discount_count").HasDefaultValue(0);
+
             builder.Property(p => p.ShopName).HasColumnName("name").IsRequired().HasMaxLength(50)
                 .HasConversion(p => p.Value, p => ShopName.Create(p).Value);
 

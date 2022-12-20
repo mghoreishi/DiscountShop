@@ -25,9 +25,14 @@ namespace Shopping.Domain.AggregateModel.ShopAggregate
         public Address Address { get; private set; }
         public Phone Phone { get; private set; }
         public long CategoryId { get; private set; }
+        public int DiscountCount { get; private set; }
         #endregion
 
         #region - Functions -
+        public void IncreaseDiscountCount()
+        {
+            DiscountCount++;
+        }
         #endregion
 
     }
