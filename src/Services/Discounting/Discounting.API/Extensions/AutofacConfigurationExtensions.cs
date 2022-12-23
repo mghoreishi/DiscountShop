@@ -5,7 +5,15 @@ namespace Discounting.API.Extensions
 {
     public static class AutofacConfigurationExtensions
     {
-
+        /// <summary>
+        /// Register Services to Autofac ContainerBuilder
+        /// </summary>
+        /// <param name="containerBuilder"></param>
+        public static void AddServices(this ContainerBuilder containerBuilder)
+        {
+            //RegisterType > As > Liftetime
+          
+        }
 
         public static IServiceProvider BuildAutofacServiceProvider(this IServiceCollection services)
         {
@@ -17,6 +25,7 @@ namespace Discounting.API.Extensions
             // to add them to Autofac.
             containerBuilder.Populate(services);
 
+            containerBuilder.AddServices();
 
             // Creating a new AutofacServiceProvider makes the container
             // available to your app using the Microsoft IServiceProvider

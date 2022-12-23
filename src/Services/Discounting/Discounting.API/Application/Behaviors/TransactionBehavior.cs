@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Serilog.Context;
 using Discounting.API.Extensions;
 using Discounting.Infrastructure.Data;
+using Discounting.API.Application.IntegrationEvents;
 
 namespace Discounting.API.Application.Behaviors
 {
@@ -14,12 +15,15 @@ namespace Discounting.API.Application.Behaviors
     public class TransactionBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
         private readonly DiscountContext _context;
+        private readonly IDiscountingIntegrationEventService _discountingIntegrationEventService;
         private readonly ILogger<TransactionBehavior<TRequest, TResponse>> _logger;
 
         public TransactionBehavior(DiscountContext dbContext,
+            IDiscountingIntegrationEventService discountingIntegrationEventService,
             ILogger<TransactionBehavior<TRequest, TResponse>> logger)
         {
             _context = dbContext ?? throw new ArgumentException(nameof(DiscountContext));
+            _discountingIntegrationEventService = discountingIntegrationEventService ?? throw new ArgumentException(nameof(discountingIntegrationEventService));
             _logger = logger ?? throw new ArgumentException(nameof(ILogger));
         }
 
@@ -56,6 +60,7 @@ namespace Discounting.API.Application.Behaviors
                         transactionId = transaction.TransactionId;
                     }
 
+                    await _discountingIntegrationEventService.PublishEventsThroughEventBusAsync(transactionId);
                 });
 
                 return response;

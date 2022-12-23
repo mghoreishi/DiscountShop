@@ -20,6 +20,9 @@ namespace Shopping.API.Application.Commands.IncreaseDiscountCount
         {
             var shop = await _shopRepository.GetByIdAsync(request.ShopId);
 
+            if (shop == null)
+                return Result.Failure($"There is no shop with shop Id: {request.ShopId}");
+
             shop.IncreaseDiscountCount();
             _shopRepository.Update(shop);
             await _shopRepository.UnitOfWork.SaveChangesAsync();

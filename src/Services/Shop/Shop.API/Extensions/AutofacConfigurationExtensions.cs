@@ -1,12 +1,24 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using IntegrationEventLogEF;
+using EventBus;
+using Shopping.API.Application.IntegrationEvents.EventHandlers;
+using System.Reflection;
 
 namespace Shopping.API.Extensions
 {
     public static class AutofacConfigurationExtensions
     {
 
-
+        /// <summary>
+        /// Register Services to Autofac ContainerBuilder
+        /// </summary>
+        /// <param name="containerBuilder"></param>
+        public static void AddServices(this ContainerBuilder containerBuilder)
+        {
+            //RegisterType > As > Liftetime
+            containerBuilder.RegisterAssemblyTypes(typeof(IncreaseDiscountCountIntegrationEventHandler).GetTypeInfo().Assembly).AsClosedTypesOf(typeof(IIntegrationEventHandler<>));
+        }
         public static IServiceProvider BuildAutofacServiceProvider(this IServiceCollection services)
         {
             ContainerBuilder containerBuilder = new();
@@ -17,6 +29,7 @@ namespace Shopping.API.Extensions
             // to add them to Autofac.
             containerBuilder.Populate(services);
 
+            containerBuilder.AddServices();
 
             // Creating a new AutofacServiceProvider makes the container
             // available to your app using the Microsoft IServiceProvider

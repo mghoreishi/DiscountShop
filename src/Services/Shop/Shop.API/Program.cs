@@ -1,3 +1,4 @@
+using IntegrationEventLogEF;
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -14,14 +15,15 @@ namespace Shopping.API
         {
             CreateHostBuilder(args)
                 .Build()
-                //.MigrateDbContext<ShopContext>((context, services) =>
-                //{
-                //    //ILogger<ShopContextSeed> logger = services.GetService<ILogger<ShopContextSeed>>();
+                 .MigrateDbContext<ShopContext>((context, services) =>
+                 {
+                     //ILogger<ShopContextSeed> logger = services.GetService<ILogger<ShopContextSeed>>();
 
-                //    //ShopContextSeed
-                //    //    .SeedAsync(context, logger)
-                //    //    .Wait();
-                //})
+                     //ShopContextSeed
+                     //    .SeedAsync(context, logger)
+                     //    .Wait();
+                 })
+                 .MigrateDbContext<IntegrationEventLogContext>((_, __) => { })
                 .Run();
         }
 

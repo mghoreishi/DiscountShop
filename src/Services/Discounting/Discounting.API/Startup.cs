@@ -5,6 +5,8 @@ using Discounting.API.Options;
 using Discounting.Domain.AggregateModel.DiscountAggregate;
 using Discounting.Infrastructure.Repositories;
 using Discounting.API.Application.Commands.CreateDiscount;
+using Discounting.API.Application.IntegrationEvents;
+using EventBusRabbitMQ;
 
 namespace Discounting.API
 {
@@ -23,7 +25,9 @@ namespace Discounting.API
             services.AddDiscountContext(Configuration);
             services.AddScoped<IDiscountRepository, DiscountRepository>();
 
-
+            EventBusOptions eventBusOptions = Configuration.GetSection(EventBusOptions.EventBus).Get<EventBusOptions>();
+            services.AddEventBus(eventBusOptions);
+            services.AddCustomIntegrations(eventBusOptions, System.Reflection.Assembly.GetExecutingAssembly().FullName);
 
             services.AddControllers()
                  // Added for functional tests
@@ -38,7 +42,7 @@ namespace Discounting.API
             services.Configure<ConnectionStringsOptions>(Configuration.GetSection(ConnectionStringsOptions.ConnectionStrings));
             services.AddCustomMediatR();
 
-
+            services.AddTransient<IDiscountingIntegrationEventService, DiscountingIntegrationEventService>();
 
             services.AddCors(options =>
             {
@@ -82,7 +86,7 @@ namespace Discounting.API
                 endpoints.MapControllers();
 
             });
-
+            app.AddSubscribtions();
 
         }
 

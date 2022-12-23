@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Discounting.Infrastructure.Data;
+using IntegrationEventLogEF;
 
 namespace Discounting.API
 {
@@ -14,14 +15,15 @@ namespace Discounting.API
         {
             CreateHostBuilder(args)
                 .Build()
-                //.MigrateDbContext<DiscountContext>((context, services) =>
-                //{
-                //    //ILogger<DiscountContextSeed> logger = services.GetService<ILogger<DiscountContextSeed>>();
+                .MigrateDbContext<DiscountContext>((context, services) =>
+                {
+                    //ILogger<DiscountContextSeed> logger = services.GetService<ILogger<DiscountContextSeed>>();
 
-                //    //DiscountContextSeed
-                //    //    .SeedAsync(context, logger)
-                //    //    .Wait();
-                //})
+                    //DiscountContextSeed
+                    //    .SeedAsync(context, logger)
+                    //    .Wait();
+                })
+                .MigrateDbContext<IntegrationEventLogContext>((_, __) => { })
                 .Run();
         }
 

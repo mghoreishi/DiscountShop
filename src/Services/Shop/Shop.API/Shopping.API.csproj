@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
@@ -28,6 +28,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\EventBusRabbitMQ\EventBusRabbitMQ.csproj" />
+    <ProjectReference Include="..\..\..\Common\EventBus\EventBus.csproj" />
+    <ProjectReference Include="..\..\..\Common\IntegrationEventLogEF\IntegrationEventLogEF.csproj" />
+    <ProjectReference Include="..\..\..\Common\WebHost.Customization\Customization.csproj" />
     <ProjectReference Include="..\Shop.Domain\Shopping.Domain.csproj" />
     <ProjectReference Include="..\Shop.Infrastructure\Shopping.Infrastructure.csproj" />
   </ItemGroup>

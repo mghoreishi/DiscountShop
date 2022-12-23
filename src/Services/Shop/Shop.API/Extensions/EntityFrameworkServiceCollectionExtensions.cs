@@ -1,6 +1,7 @@
 ﻿using Shopping.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
-
+using IntegrationEventLogEF;
+using System.Reflection;
 
 namespace Shopping.API.Extensions
 {
@@ -14,6 +15,14 @@ namespace Shopping.API.Extensions
                           options.UseNpgsql(configuration.GetConnectionString("ShopConnectionString")),
                           ServiceLifetime.Scoped);
 
+            services.AddDbContext<IntegrationEventLogContext>(options =>
+            {
+                options.UseNpgsql(configuration.GetConnectionString("ShopConnectionString"),
+                    npgsqlOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.MigrationsAssembly(typeof(ShopContext).GetTypeInfo().Assembly.GetName().Name);
+                    });
+            });
         }
     }
 }

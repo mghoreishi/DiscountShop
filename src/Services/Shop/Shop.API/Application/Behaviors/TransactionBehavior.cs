@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Serilog.Context;
+using Shopping.API.Application.IntegrationEvents;
 using Shopping.API.Extensions;
 using Shopping.Infrastructure.Data;
 
@@ -14,12 +15,15 @@ namespace Shopping.API.Application.Behaviors
     public class TransactionBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
         private readonly ShopContext _context;
+        private readonly IShoppingIntegrationEventService _shoppingIntegrationEventService;
         private readonly ILogger<TransactionBehavior<TRequest, TResponse>> _logger;
 
         public TransactionBehavior(ShopContext dbContext,
+            IShoppingIntegrationEventService shoppingIntegrationEventService,
             ILogger<TransactionBehavior<TRequest, TResponse>> logger)
         {
             _context = dbContext ?? throw new ArgumentException(nameof(ShopContext));
+            _shoppingIntegrationEventService = shoppingIntegrationEventService ?? throw new ArgumentException(nameof(shoppingIntegrationEventService));
             _logger = logger ?? throw new ArgumentException(nameof(ILogger));
         }
 
@@ -55,7 +59,7 @@ namespace Shopping.API.Application.Behaviors
 
                         transactionId = transaction.TransactionId;
                     }
-
+                    await _shoppingIntegrationEventService.PublishEventsThroughEventBusAsync(transactionId);
                 });
 
                 return response;

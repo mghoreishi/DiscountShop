@@ -12,6 +12,8 @@ namespace Discounting.API.Controllers
     {
         private readonly IMediator _mediator;
 
+       
+
 
         public DiscountController(IMediator mediator)
         {
@@ -45,5 +47,6 @@ namespace Discounting.API.Controllers
 
         #endregion
     }
+   
 }
 

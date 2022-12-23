@@ -1,5 +1,10 @@
 ﻿using FluentValidation.AspNetCore;
+using MassTransit;
+using MediatR;
+using EventBusRabbitMQ;
 using Shopping.API.Application.Commands.CreateShop;
+using Shopping.API.Application.IntegrationEvents;
+using Shopping.API.Application.IntegrationEvents.EventHandlers;
 using Shopping.API.Controllers;
 using Shopping.API.Extensions;
 using Shopping.API.Options;
@@ -35,11 +40,16 @@ namespace Shopping.API
                  });
 
 
+            EventBusOptions eventBusOptions = Configuration.GetSection(EventBusOptions.EventBus).Get<EventBusOptions>();
+            services.AddEventBus(eventBusOptions);
+            services.AddCustomIntegrations(eventBusOptions, System.Reflection.Assembly.GetExecutingAssembly().FullName);
+            services.AddTransient<IShoppingIntegrationEventService, ShoppingIntegrationEventService>();
+
             services.AddCustomSwaggerGen();
             services.Configure<ConnectionStringsOptions>(Configuration.GetSection(ConnectionStringsOptions.ConnectionStrings));
             services.AddCustomMediatR();
 
-
+          
 
             services.AddCors(options =>
             {
@@ -83,7 +93,7 @@ namespace Shopping.API
                 endpoints.MapControllers();
 
             });
-
+            app.AddSubscribtions();
 
         }
 

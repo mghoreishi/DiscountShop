@@ -7,9 +7,13 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["src/Services/Shop/Shop.API/Shopping.API.csproj", "src/Services/Shop/Shop.API/"]
+COPY ["src/Common/WebHost.Customization/Customization.csproj", "src/Common/WebHost.Customization/"]
+COPY ["src/Common/IntegrationEventLogEF/IntegrationEventLogEF.csproj", "src/Common/IntegrationEventLogEF/"]
+COPY ["src/Common/.EventBus/.EventBus.csproj", "src/Common/.EventBus/"]
 COPY ["src/Services/Shop/Shop.Infrastructure/Shopping.Infrastructure.csproj", "src/Services/Shop/Shop.Infrastructure/"]
 COPY ["src/Services/Shop/Shop.Domain/Shopping.Domain.csproj", "src/Services/Shop/Shop.Domain/"]
 COPY ["src/Common/CSharpFunctionalExtensions/CSharpFunctionalExtensions.csproj", "src/Common/CSharpFunctionalExtensions/"]
+COPY ["src/Common/.EventBusRabbitMQ/.EventBusRabbitMQ.csproj", "src/Common/.EventBusRabbitMQ/"]
 RUN dotnet restore "src/Services/Shop/Shop.API/Shopping.API.csproj"
 COPY . .
 WORKDIR "/src/src/Services/Shop/Shop.API"

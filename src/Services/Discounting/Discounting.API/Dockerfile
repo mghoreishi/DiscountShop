@@ -7,6 +7,7 @@ EXPOSE 80
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["src/Services/Discounting/Discounting.API/Discounting.API.csproj", "src/Services/Discounting/Discounting.API/"]
+COPY ["src/Common/IntegrationEventLogEF/IntegrationEventLogEF.csproj", "src/Common/IntegrationEventLogEF/"]
 COPY ["src/Services/Discounting/Discounting.Domain/Discounting.Domain.csproj", "src/Services/Discounting/Discounting.Domain/"]
 COPY ["src/Common/CSharpFunctionalExtensions/CSharpFunctionalExtensions.csproj", "src/Common/CSharpFunctionalExtensions/"]
 COPY ["src/Services/Discounting/Discounting.Infrastructure/Discounting.Infrastructure.csproj", "src/Services/Discounting/Discounting.Infrastructure/"]

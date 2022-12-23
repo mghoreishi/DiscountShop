@@ -18,8 +18,8 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
     <NoWarn>1591;1701;1702</NoWarn>
-    <AssemblyName>OrgNet.IntSoft.CSharpFunctionalExtensions</AssemblyName>
-    <RootNamespace>OrgNet.IntSoft.CSharpFunctionalExtensions</RootNamespace>
+    <AssemblyName>CSharpFunctionalExtensions</AssemblyName>
+    <RootNamespace>CSharpFunctionalExtensions</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

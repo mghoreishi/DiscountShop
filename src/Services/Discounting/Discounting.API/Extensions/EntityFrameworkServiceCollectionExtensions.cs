@@ -1,6 +1,7 @@
 ﻿using Discounting.Infrastructure.Data;
+using IntegrationEventLogEF;
 using Microsoft.EntityFrameworkCore;
-
+using System.Reflection;
 
 namespace Discounting.API.Extensions
 {
@@ -13,6 +14,15 @@ namespace Discounting.API.Extensions
             services.AddDbContext<DiscountContext>(options =>
                           options.UseNpgsql(configuration.GetConnectionString("DiscountConnectionString")),
                           ServiceLifetime.Scoped);
+
+            services.AddDbContext<IntegrationEventLogContext>(options =>
+            {
+                options.UseNpgsql(configuration.GetConnectionString("DiscountConnectionString"),
+                    npgsqlOptionsAction: sqlOptions =>
+                    {
+                        sqlOptions.MigrationsAssembly(typeof(DiscountContext).GetTypeInfo().Assembly.GetName().Name);
+                    });
+            });
 
         }
     }
