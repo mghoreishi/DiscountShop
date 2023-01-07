@@ -27,6 +27,14 @@ services:
     depends_on:
       - discountshopdb
 
+
+  ocelotapigateway:
+    image: ${DOCKER_REGISTRY-}ocelotapigateway
+    build:
+      context: .
+      dockerfile: src/ApiGateways/OcelotAPIGateWay/Dockerfile
+
 volumes:
   pgadmin-data:
   discountshop-database:
+

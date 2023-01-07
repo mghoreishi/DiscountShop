@@ -11,10 +11,11 @@
     "Discounting.API": {
       "commandName": "Project",
       "launchBrowser": true,
+      "lunchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5234",
+      "applicationUrl": "http://localhost:6012",
       "dotnetRunMessages": true
     },
     "IIS Express": {

@@ -1,0 +1,22 @@
+{
+  "Routes": [
+    // Discount Api
+    {
+      "DownstreamPathTemplate": "/api/Discount",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "discounting.api",
+          "Port": "80"
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Discount",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+    }
+
+
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "http://localhost:8010"
+  }
+}

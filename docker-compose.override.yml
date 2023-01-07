@@ -41,11 +41,24 @@ services:
       - "6010:80"
 
   discounting.api:
+    container_name: discounting.api
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DiscountConnectionString=Server=discountshopdb;Port=5432;Database=discountDb;UId=admin;Password=admin1234;
       - EventBus__EventBusConnection=rabbitmq
     ports:
       - "6012:80"
+
+
+  ocelotapigateway:
+    container_name: ocelotapigateway
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - discounting.api
+    ports:
+      - "8010:80"
+
+
 
 
